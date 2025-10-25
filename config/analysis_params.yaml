@@ -1,0 +1,80 @@
+# Analysis parameters for AD Microglia Meta-Analysis
+
+# Quality Control
+quality_control:
+  min_genes: 200
+  min_cells: 3
+  max_mt_percent: 20
+  max_genes: 5000
+  min_counts: 1000
+
+# Normalization
+normalization:
+  target_sum: 10000
+  log_transform: true
+  scale_max_value: 10
+
+# Highly Variable Genes
+hvg_selection:
+  min_mean: 0.0125
+  max_mean: 3
+  min_disp: 0.5
+
+# Integration Methods
+integration:
+  default_method: "scvi"
+  scvi:
+    n_latent: 30
+    n_layers: 2
+    dropout_rate: 0.1
+    max_epochs: 400
+  scanorama:
+    sigma: 15
+    alpha: 0.1
+
+# Clustering
+clustering:
+  algorithm: "leiden"
+  resolutions: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0]
+  optimal_selection: "silhouette"
+
+# Differential Expression
+differential_expression:
+  method: "wilcoxon"
+  n_genes: 100
+  min_log2fc: 0.25
+  min_pct: 0.1
+  pval_cutoff: 0.05
+
+# Meta-Analysis
+meta_analysis:
+  method: "fixed_effects"
+  confidence_level: 0.95
+  heterogeneity_test: true
+
+# Microglia Markers
+microglia_markers:
+  core:
+    - "CX3CR1"
+    - "Cx3cr1"
+    - "P2RY12"
+    - "P2ry12"
+    - "TMEM119"
+    - "Tmem119"
+  extended:
+    - "CSF1R"
+    - "Csf1r"
+    - "AIF1"
+    - "Aif1"
+    - "ITGAM"
+    - "Itgam"
+    - "CD68"
+    - "Cd68"
+    - "TREM2"
+    - "Trem2"
+
+# CellTypist Annotation
+cell_annotation:
+  model: "Immune_All_High.pkl"
+  confidence_threshold: 0.5
+  majority_voting: true

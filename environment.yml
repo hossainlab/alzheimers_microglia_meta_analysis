@@ -1,0 +1,34 @@
+name: alzheimers_microglia_meta_analysis
+channels: [conda-forge, bioconda, defaults]
+dependencies:
+  - python
+  - anndata
+  - scanpy
+  - scvi-tools
+  - scvelo
+  - muon
+  - episcanpy
+  - mofapy2
+  - statsmodels
+  - decoupler
+  - gseapy
+  - scCODA
+  - pyscenic
+  - leidenalg
+  - igraph
+  - pyarrow
+  - scanorama
+  - numpy 
+  - pandas 
+  - matplotlib 
+  - seaborn 
+  - plotly
+  - pyyaml
+  - tqdm
+  - graphviz
+  - pygraphviz
+  - gcc                # (Linux) for some builds; on macOS use clang (Xcode)
+  - pip
+  - jupyterlab
+  - pip:
+      - mudata

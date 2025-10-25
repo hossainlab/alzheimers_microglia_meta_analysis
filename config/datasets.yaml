@@ -1,0 +1,42 @@
+# Dataset configuration for AD Microglia Meta-Analysis
+
+datasets:
+  GSE98969:
+    description: "Keren-Shaul et al. (2017) - Mouse AD model microglia states"
+    species: "mouse"
+    tissue: "whole_brain"
+    condition: "AD_model"
+    reference: "https://doi.org/10.1016/j.cell.2017.05.018"
+    geo_url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE98969"
+
+  GSE103334:
+    description: "Mathys et al. (2019) - Human AD hippocampus"
+    species: "mouse"
+    tissue: "hippocampus"
+    condition: "AD_model"
+    reference: "https://doi.org/10.1038/s41586-019-1195-2"
+    geo_url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103334"
+
+  GSE135437:
+    description: "Sankowski et al. (2019) - Human AD cortex"
+    species: "human"
+    tissue: "cortex"
+    condition: "AD"
+    reference: "https://doi.org/10.1038/s41593-019-0532-y"
+    geo_url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE135437"
+
+  GSE157827:
+    description: "Leng et al. (2021) - Human AD prefrontal cortex"
+    species: "human"
+    tissue: "prefrontal_cortex"
+    condition: "AD"
+    reference: "https://doi.org/10.1038/s41593-020-00764-7"
+    geo_url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE157827"
+
+  GSE129788:
+    description: "Aging mouse brain microglia"
+    species: "mouse"
+    tissue: "whole_brain"
+    condition: "aging"
+    reference: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE129788"
+    geo_url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE129788"

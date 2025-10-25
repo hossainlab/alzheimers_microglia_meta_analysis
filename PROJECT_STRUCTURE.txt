@@ -1,0 +1,144 @@
+ALZHEIMER'S MICROGLIA META-ANALYSIS - NEW STRUCTURE
+====================================================
+
+alzheimers_microglia_meta_analysis/
+│
+├── 📦 PYTHON PACKAGE (src/)
+│   └── src/ad_microglia/
+│       ├── __init__.py
+│       ├── config/               # Configuration management
+│       │   ├── __init__.py
+│       │   └── settings.py       # Centralized settings with get_settings()
+│       ├── data/                 # Data handling modules
+│       │   ├── __init__.py
+│       │   ├── download.py       # GEO dataset download
+│       │   ├── preprocessing.py  # QC, normalization, scaling
+│       │   └── loaders.py        # Data loading utilities
+│       ├── integration/          # Dataset integration
+│       │   ├── __init__.py
+│       │   └── integration.py    # scVI, Scanorama methods
+│       ├── analysis/             # Analysis modules
+│       │   ├── __init__.py
+│       │   ├── cell_annotation.py
+│       │   ├── activation_states.py
+│       │   └── meta_analysis.py
+│       └── utils/                # Utility modules
+│           ├── __init__.py
+│           └── plot_manager.py   # Centralized plot management
+│
+├── 🔧 EXECUTABLE SCRIPTS (scripts/)
+│   ├── 01_download_data.py
+│   ├── 02_preprocess_data.py
+│   ├── 03_annotate_cells.py
+│   ├── 04_integrate_datasets.py
+│   ├── 05_analyze_activation_states.py
+│   ├── 06_run_meta_analysis.py
+│   └── run_full_pipeline.py      # Main pipeline runner
+│
+├── 🧪 TESTS (tests/)
+│   ├── __init__.py
+│   ├── conftest.py               # Pytest configuration
+│   ├── test_data/                # Test fixtures
+│   ├── test_pipeline.py
+│   └── test_quick.py
+│
+├── ⚙️ CONFIGURATION (config/)
+│   ├── datasets.yaml             # Dataset metadata & references
+│   └── analysis_params.yaml      # QC, clustering, DE parameters
+│
+├── 📊 DATA (unchanged)
+│   ├── data/raw/                 # Downloaded GEO datasets
+│   ├── data/processed/           # Processed .h5ad files
+│   └── data/metadata/            # Metadata JSON files
+│
+├── 📈 RESULTS (unchanged)
+│   ├── results/figures/          # Analysis plots
+│   ├── results/tables/           # Statistical results
+│   ├── results/reports/          # Summary reports
+│   └── results/meta_analysis/    # Meta-analysis outputs
+│
+├── 📓 NOTEBOOKS (new)
+│   ├── notebooks/exploratory/    # Exploratory analysis
+│   └── notebooks/publication/    # Publication figures
+│
+├── 📚 DOCUMENTATION (docs/)
+│   ├── api/                      # API documentation
+│   ├── tutorials/                # User guides
+│   ├── installation.md           # Installation guide
+│   ├── migration_guide.md        # Migration instructions
+│   └── analysis_protocol.md      # Analysis methodology
+│
+├── 📋 PACKAGE CONFIGURATION
+│   ├── pyproject.toml            # Modern Python packaging (PEP 518)
+│   ├── setup.py                  # Backward compatibility
+│   ├── requirements.txt          # Core dependencies
+│   ├── requirements-dev.txt      # Development dependencies
+│   ├── .env.example              # Environment template
+│   └── .gitignore                # Comprehensive exclusions
+│
+└── 📖 DOCUMENTATION FILES
+    ├── README.md                 # Project overview (updated)
+    ├── CHANGELOG.md              # Version history
+    ├── RESTRUCTURE_SUMMARY.md    # Restructuring details
+    ├── NEXT_STEPS.md             # Quick start guide
+    ├── PLOT_MANAGEMENT.md        # Plot system docs
+    └── LICENSE                   # Project license
+
+LEGACY (preserved for reference):
+├── scripts/preprocessing/        # Old preprocessing scripts
+├── scripts/analysis/             # Old analysis scripts  
+├── scripts/integration/          # Old integration scripts
+└── scripts/utils/                # Old utils
+
+KEY IMPROVEMENTS:
+=================
+
+✅ Proper src/ package layout (PEP 518 compliant)
+✅ Clean imports (no sys.path hacks)
+✅ Centralized configuration (YAML + env vars + Settings class)
+✅ Installable package (pip install -e .)
+✅ Comprehensive .gitignore
+✅ Pytest infrastructure
+✅ Development tools ready (black, flake8, mypy)
+✅ Professional documentation
+✅ Separation of concerns (src vs scripts vs tests)
+✅ 100% backward compatible with existing data/results
+
+INSTALLATION:
+============
+
+1. Create virtual environment:
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+
+2. Install package:
+   pip install -e .
+
+3. Configure (optional):
+   cp .env.example .env
+
+4. Run pipeline:
+   python scripts/run_full_pipeline.py
+
+USAGE EXAMPLES:
+==============
+
+# Import package modules
+from ad_microglia.config import get_settings
+from ad_microglia.data.preprocessing import DataPreprocessor
+from ad_microglia.utils import PlotManager
+
+# Use centralized settings
+settings = get_settings()
+print(settings.QC_MIN_GENES)
+print(settings.RAW_DATA_DIR)
+
+# Run preprocessing
+preprocessor = DataPreprocessor()
+preprocessor.process_dataset('data/raw/GSE98969', 'GSE98969')
+
+# Create plots
+plot_mgr = PlotManager()
+fig, ax = plt.subplots()
+plot_mgr.save_plot(fig, 'my_plot', 'qc', 'Description')
+
